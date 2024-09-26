@@ -88,8 +88,8 @@ class ActorList(
     mixins.ListModelMixin,
     mixins.CreateModelMixin
 ):
-    queryset = Movie.objects.all()
-    serializer_class = MovieSerializer
+    queryset = Actor.objects.all()
+    serializer_class = ActorSerializer
 
     def get(self, request, *args, **kwargs) -> Response:
         return self.list(request, *args, **kwargs)
@@ -117,4 +117,4 @@ class ActorDetail(
         return self.destroy(request, *args, **kwargs)
 
     def patch(self, request, *args, **kwargs) -> Response:
-        return self.patch(request, *args, **kwargs)
+        return self.partial_update(request, *args, **kwargs)
